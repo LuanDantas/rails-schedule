@@ -1,0 +1,8 @@
+<p>Phones:</p>
+
+<%= f.fields_for :phones do |phone| %>
+    <div class="field">
+        <%= phone.label :number %>
+        <%= phone.text_field :number %>
+    </div>        
+<% end %>

@@ -13,6 +13,7 @@ class ContactsController < ApplicationController
   # call view with form to create a new contact
   def new
     @contact = Contact.new
+    @contact.build_address
   end
 
   # this is the post action, that will called after new's (action) form was submited
@@ -57,6 +58,9 @@ class ContactsController < ApplicationController
 
     # this method is used to get all params from view and then, pass to anothers actions
     def contact_params      
-      params.require(:contact).permit(:name)
+      params.require(:contact).permit(:name,
+        address_attributes: [:street, :number, :neighborhood],
+        phones_attributes: [:number]  
+      )
     end
 end

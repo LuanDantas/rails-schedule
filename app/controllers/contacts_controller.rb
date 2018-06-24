@@ -30,7 +30,7 @@ class ContactsController < ApplicationController
   end
 
   def update
-    if @contact.update
+    if @contact.update(contact_params)
       redirect_to contacts_path
     else 
       render :new, notice: "Não foi possível editar o contato"
